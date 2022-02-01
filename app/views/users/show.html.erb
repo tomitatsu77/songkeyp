@@ -1,5 +1,5 @@
 <h4>マイページ</h4>
-<%= image_tag @user, size: "200x200" %>
+<%= image_tag @user.get_profile_image("100x100") %>
 <div>ユーザネーム</div>
   <%= @user.username %>
 <div>メールアドレス</div>
