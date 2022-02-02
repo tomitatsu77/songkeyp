@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'about' => 'homes#top'
+  get 'songs/search' => 'songs#search1'
+  get 'artists/search' => 'songs#search2'
   resources :songs, only:[:index,:show,:create,:update,:destroy]
-  get 'artist' => 'songs#artist'
+  get 'artists' => 'songs#artist'
   get 'mypage' => 'users#show'
   get 'mypage/edit' => 'users#edit'
   patch 'mypage' => 'users#update'

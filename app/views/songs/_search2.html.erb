@@ -1,0 +1,33 @@
+<div class="search-form">
+  <%= form_with url: artists_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<table class="table">
+    <tbody>
+      <% if @artist_search != nil %>
+        <strong>検索結果：</strong>
+        <% @artist_search.each do |song| %>
+          <% if @search_artist != song.artist %>
+            <% @search_artist=song.artist %>
+            <h3><%= @search_artist %></h3>
+          <% end %>
+          <tr>
+            <td>
+              <%= link_to song_path(song) do %>
+                <%= song.song_name %>
+              <% end %>
+            </td>
+            <td>
+              <%= form_with model: song, local:true do |f| %>
+                <%= f.select :key, {"-7": -7, "-6": -6,"-5": -5,"-4": -4,"-3": -3,"-2": -2,"-1": -1,原キー: 0,"+1": +1,"+2": +2,"+3": +3,"+4": +4,"+5": +5,"+6": +6,"+7": +7} %>
+                <%= f.submit '更新' %>
+              <% end %>
+            </td>
+            <td><%= link_to "削除", song_path(song), method: :delete %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>

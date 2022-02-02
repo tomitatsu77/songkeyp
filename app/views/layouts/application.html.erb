@@ -16,7 +16,7 @@
       <% if user_signed_in? %>
         <%= link_to "マイページ", mypage_path %>
         <%= link_to "曲一覧", songs_path %>
-        <%= link_to "アーティスト順", artist_path %>
+        <%= link_to "アーティスト順", artists_path %>
       <% end %>
       <% if user_signed_in? %>
          <%= link_to "そんぐキーぷとは？", about_path %>
@@ -26,6 +26,7 @@
         <%= link_to "ログイン", new_user_session_path %>
         <%= link_to "そんぐキーぷとは？", songs_path %>
       <% end %>
+      
     </header>
     <%= flash[:notice] %>
     <%= yield %>

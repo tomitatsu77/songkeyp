@@ -34,6 +34,26 @@ class SongsController < ApplicationController
     @song.destroy
     redirect_to songs_path
   end
+  
+  def search1
+    @song_search = Song.search1(params[:keyword])
+    @keyword = params[:keyword]
+    #indexビュー用
+    @release=Song.new
+    @songs=Song.order("song_name")
+    @random = Song.order("RANDOM()").first
+    render "index"
+  end
+  
+  def search2
+    @artist_search = Song.search2(params[:keyword])
+    @keyword = params[:keyword]
+    #artistビュー用
+    @songs=Song.order("artist")
+    @artist=""
+    @search_artist=""
+    render "artist"
+  end
 
   private
   def song_params
