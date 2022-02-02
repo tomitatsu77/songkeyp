@@ -9,6 +9,11 @@ class SongsController < ApplicationController
   def show
     @song=Song.find(params[:id])
   end
+  
+  def artist
+    @songs=Song.order("artist")
+    @artist=""
+  end
 
   def create
     @release=Song.new(song_params)

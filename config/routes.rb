@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#top'
   resources :songs, only:[:index,:show,:create,:update,:destroy]
-  
+  get 'artist' => 'songs#artist'
   get 'mypage' => 'users#show'
   get 'mypage/edit' => 'users#edit'
   patch 'mypage' => 'users#update'

@@ -16,6 +16,7 @@
       <% if user_signed_in? %>
         <%= link_to "マイページ", mypage_path %>
         <%= link_to "曲一覧", songs_path %>
+        <%= link_to "アーティスト順", artist_path %>
       <% end %>
       <% if user_signed_in? %>
          <%= link_to "そんぐキーぷとは？", about_path %>
