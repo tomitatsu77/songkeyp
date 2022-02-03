@@ -10,19 +10,19 @@
     <tbody>
       <% if @song_search != nil %>
         <% @song_search.each do |song| %>
-          <tr class="col-5">
+          <tr>
             <td>
               <%= link_to song_path(song) do %>
                 <%= song.song_name %>
               <% end %>
             </td>
-            <td class="col-4">
+            <td>
               <%= form_with model: song, local:true do |f| %>
                 <%= f.select :key, {"+7": +7, "+6": +6,"+5": +5,"+4": +4,"+3": +3,"+2": +2,"+1": +1,原キー: 0,"-1": -1,"-2": -2,"-3": -3,"-4": -4,"-5": -5,"-6": -6,"-7": -7} %>
                 <%= f.submit '更新' %>
               <% end %>
             </td>
-            <td class="col-3"><%= link_to "削除", song_path(song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
+            <td><%= link_to "削除", song_path(song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
           </tr>
         <% end %>
       <% end %>
