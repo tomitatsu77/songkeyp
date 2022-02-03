@@ -3,7 +3,7 @@ class SongsController < ApplicationController
   def index
     @release=Song.new
     @songs=Song.order("song_name")
-    @random = Song.order("RANDOM()").first
+    @random = Song.pluck(:id).sample
   end
 
   def show
