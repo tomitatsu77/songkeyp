@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_130257) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "song_name"
+    t.string "song_name", null: false
     t.string "artist"
     t.text "memo"
     t.integer "eval"
