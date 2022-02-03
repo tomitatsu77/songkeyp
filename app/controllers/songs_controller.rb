@@ -48,6 +48,7 @@ class SongsController < ApplicationController
     @release=Song.new
     @songs=current_user.songs.order("song_name")
     @random = current_user.songs.pluck(:id).sample
+    @artist=current_user.songs.select(:artist).distinct
     render "index"
   end
 
