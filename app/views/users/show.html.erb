@@ -1,7 +1,12 @@
-<h4>マイページ</h4>
-<%#= image_tag @user.get_profile_image("100x100") %>
-<div>ユーザネーム</div>
-  <%= @user.username %>
-<div>メールアドレス</div>
-  <%= @user.email %>
-<div><%= link_to "編集する", mypage_edit_path %></div>
+<div class="jumbotron">
+  <h4 class="display-5">マイページ</h4>
+  
+  <hr class="my-4">
+  <strong>ユーザネーム</strong><br>
+  <strong><%= @user.username %></strong><br>
+  <br>
+  <strong>メールアドレス</strong><br>
+  <strong><%= @user.email %></strong><br>
+  <div class="mt-3"><%= link_to "編集する", mypage_edit_path,class: "btn btn-outline-info" %></div>
+
+</div>

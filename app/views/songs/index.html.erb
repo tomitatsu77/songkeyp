@@ -1,32 +1,36 @@
 
 <%= render 'songs/search1' %>
-<h1>曲を登録する</h1>
-<%= form_with model: @release, local:true do |f| %>
-  <strong>曲名</strong>
-    <%= f.text_field :song_name %>
-  <div>
-    <strong>アーティスト(丸いボタンを選んでから）</strong>
+<div class="shadow p-3 mb-5 bg-white rounded">
+  <h1>曲を登録する</h1>
+  <%= form_with model: @release, local:true do |f| %>
+    <strong class="text-primary">曲名</strong>
+      <%= f.text_field :song_name %>
     <div>
-      <%= f.radio_button :select_artist, 1 %>
-      新しいアーティスト<br>
-      <%= f.text_field :artist %><br>
-      
-      <%= f.radio_button :select_artist, 2 %>
-      登録済みのアーティスト<br>
-      <%= f.select :artist77, options_from_collection_for_select(@artist, :artist, :artist ,"") %>
+      <strong class="text-primary">アーティスト(丸いボタンを選んでください）</strong>
+      <div>
+        <%= f.radio_button :select_artist, 1 %>
+        新しいアーティスト<br>
+        <%= f.text_field :artist %><br>
+        
+        <%= f.radio_button :select_artist, 2 %>
+        登録済みのアーティスト<br>
+        <%= f.select :artist77, options_from_collection_for_select(@artist, :artist, :artist ,"") %>
+      </div>
     </div>
-  </div>
-  <strong>キー</strong>
-  <div><%= f.select :key, {"+7": +7, "+6": +6,"+5": +5,"+4": +4,"+3": +3,"+2": +2,"+1": +1,原キー: 0,"-1": -1,"-2": -2,"-3": -3,"-4": -4,"-5": -5,"-6": -6,"-7": -7} %></div>
-  <strong>メモ</strong><br>
-  <%= f.text_area :memo %>
-    
+    <strong class="text-primary">キー</strong>
+    <div><%= f.select :key, {"+7": +7, "+6": +6,"+5": +5,"+4": +4,"+3": +3,"+2": +2,"+1": +1,原キー: 0,"-1": -1,"-2": -2,"-3": -3,"-4": -4,"-5": -5,"-6": -6,"-7": -7} %></div>
+    <strong class="text-primary">メモ</strong><br>
+    <%= f.text_area :memo %>
+      
+  
+    <%= f.submit '登録' %>
+  <% end %>
+</div>
 
-  <%= f.submit '登録' %>
-<% end %>
 <% if @songs.present? %>
   <%= link_to "ランダム", song_path(@random), class: "btn btn-info" %>
 <% end %>
+<div class="mb-1"></div>
 <div>
   <table class="table table-striped table-sm">
     <thead>
@@ -45,10 +49,12 @@
             <% end %>
           </td>
           <td>
+            <div style="display:inline-flex">
             <%= form_with model: song, local:true do |f| %>
               <%= f.select :key, {"+7": +7, "+6": +6,"+5": +5,"+4": +4,"+3": +3,"+2": +2,"+1": +1,原キー: 0,"-1": -1,"-2": -2,"-3": -3,"-4": -4,"-5": -5,"-6": -6,"-7": -7} %>
               <%= f.submit '更新' %>
             <% end %>
+            </div>
           </td>
           <td><%= link_to "削除", song_path(song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
         </tr>
