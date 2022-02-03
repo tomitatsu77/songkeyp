@@ -18,11 +18,11 @@
             </td>
             <td>
               <%= form_with model: song, local:true do |f| %>
-                <%= f.select :key, {"-7": -7, "-6": -6,"-5": -5,"-4": -4,"-3": -3,"-2": -2,"-1": -1,原キー: 0,"+1": +1,"+2": +2,"+3": +3,"+4": +4,"+5": +5,"+6": +6,"+7": +7} %>
+                <%= f.select :key, {"+7": +7, "+6": +6,"+5": +5,"+4": +4,"+3": +3,"+2": +2,"+1": +1,原キー: 0,"-1": -1,"-2": -2,"-3": -3,"-4": -4,"-5": -5,"-6": -6,"-7": -7} %>
                 <%= f.submit '更新' %>
               <% end %>
             </td>
-            <td><%= link_to "削除", song_path(song), method: :delete %></td>
+            <td><%= link_to "削除", song_path(song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
           </tr>
         <% end %>
       <% end %>

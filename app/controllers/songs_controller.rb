@@ -5,12 +5,13 @@ class SongsController < ApplicationController
     @songs=current_user.songs.order("song_name")
     #@random = Song.order("RANDOM()").first
     @random = current_user.songs.pluck(:id).sample
+    @artist=current_user.songs.select(:artist).distinct
   end
 
   def show
     @song=Song.find(params[:id])
   end
-  
+
   def artist
     @songs=current_user.songs.order("artist")
     @artist=""
@@ -19,6 +20,10 @@ class SongsController < ApplicationController
   def create
     @release=Song.new(song_params)
     @release.user_id=current_user.id
+    if  params[:song][:select_artist] == "1"
+    elsif params[:song][:select_artist] == "2"
+      @release.artist = params[:song][:artist77]
+    end
     @release.save
     redirect_to songs_path
   end
@@ -35,7 +40,7 @@ class SongsController < ApplicationController
     @song.destroy
     redirect_to songs_path
   end
-  
+
   def search1
     @song_search = current_user.songs.search1(params[:keyword])
     @keyword = params[:keyword]
@@ -45,7 +50,7 @@ class SongsController < ApplicationController
     @random = current_user.songs.pluck(:id).sample
     render "index"
   end
-  
+
   def search2
     @artist_search = current_user.songs.order("artist").search2(params[:keyword])
     @keyword = params[:keyword]
