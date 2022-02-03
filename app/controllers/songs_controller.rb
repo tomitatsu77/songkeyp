@@ -37,20 +37,20 @@ class SongsController < ApplicationController
   end
   
   def search1
-    @song_search = Song.search1(params[:keyword])
+    @song_search = current_user.songs.search1(params[:keyword])
     @keyword = params[:keyword]
     #indexビュー用
     @release=Song.new
-    @songs=Song.order("song_name")
-    @random = Song.order("RANDOM()").first
+    @songs=current_user.songs.order("song_name")
+    @random = current_user.songs.pluck(:id).sample
     render "index"
   end
   
   def search2
-    @artist_search = Song.search2(params[:keyword])
+    @artist_search = current_user.songs.order("artist").search2(params[:keyword])
     @keyword = params[:keyword]
     #artistビュー用
-    @songs=Song.order("artist")
+    @songs=current_user.songs.order("artist")
     @artist=""
     @search_artist=""
     render "artist"
