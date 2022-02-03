@@ -1,17 +1,4 @@
-<%= render 'songs/search1' %>
-<h1>曲を登録する</h1>
-<%= form_with model: @release, local:true do |f| %>
-  <div>曲名</div>
-    <%= f.text_field :song_name %>
-  <div>アーティスト</div>
-    <%= f.text_field :artist %>
-  <div>キー</div>
-    <%= f.select :key, {"+7": +7, "+6": +6,"+5": +5,"+4": +4,"+3": +3,"+2": +2,"+1": +1,原キー: 0,"-1": -1,"-2": -2,"-3": -3,"-4": -4,"-5": -5,"-6": -6,"-7": -7} %>
-  <div>メモ</div>
-    <%= f.text_area :memo %>
 
-  <%= f.submit '投稿' %>
-<% end %>
 <%= link_to "ランダム", song_path(@random) %>
 <div>
   <table class="table">
