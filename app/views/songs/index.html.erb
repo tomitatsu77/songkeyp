@@ -1,3 +1,4 @@
+
 <%= render 'songs/search1' %>
 <h1>曲を登録する</h1>
 <%= form_with model: @release, local:true do |f| %>
@@ -12,7 +13,9 @@
 
   <%= f.submit '投稿' %>
 <% end %>
-<%= link_to "ランダム", song_path(@random) %>
+<% if @songs.present? %>
+  <%= link_to "ランダム", song_path(@random) %>
+<% end %>
 <div>
   <table class="table">
     <thead>

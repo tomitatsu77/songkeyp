@@ -1,4 +1,5 @@
 <div class="search-form">
+  <strong>曲名で検索</strong>
   <%= form_with url: songs_search_path, method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: @keyword %>
     <%= f.submit "検索" %>

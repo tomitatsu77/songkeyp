@@ -2,9 +2,9 @@ class SongsController < ApplicationController
 
   def index
     @release=Song.new
-    @songs=Song.order("song_name")
+    @songs=current_user.songs.order("song_name")
     #@random = Song.order("RANDOM()").first
-    @random = Song.pluck(:id).sample
+    @random = current_user.songs.pluck(:id).sample
   end
 
   def show
@@ -12,7 +12,7 @@ class SongsController < ApplicationController
   end
   
   def artist
-    @songs=Song.order("artist")
+    @songs=current_user.songs.order("artist")
     @artist=""
   end
 
